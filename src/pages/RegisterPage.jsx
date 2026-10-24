@@ -12,7 +12,7 @@ function getErrorMessage(error) {
   if (Array.isArray(detail)) {
     return detail.map((item) => item.msg).join(', ')
   }
-  return detail || 'Unable to register. Check your details and try again.'
+  return detail || "We couldn't create your account. Check your details and try again."
 }
 
 export default function RegisterPage() {
@@ -29,17 +29,17 @@ export default function RegisterPage() {
     const username = form.username.trim()
 
     if (!fullName) {
-      setError('Full name is required.')
+      setError('Please enter your name.')
       return
     }
 
     if (!username) {
-      setError('Username is required.')
+      setError('Please pick a username.')
       return
     }
 
     if (!usernamePattern.test(username)) {
-      setError('Username must be 3-50 characters and contain only letters, numbers, hyphens, and underscores.')
+      setError('Usernames are 3 to 50 characters and can use letters, numbers, hyphens and underscores.')
       return
     }
 
@@ -79,7 +79,7 @@ export default function RegisterPage() {
     <div className="mx-auto max-w-md rounded-3xl border border-white/80 bg-white/85 p-8 shadow-[0_30px_100px_rgba(15,23,42,0.08)] backdrop-blur">
       <div className="mb-6 space-y-2">
         <h1 className="font-display text-3xl font-bold tracking-tight">Create your account</h1>
-        <p className="text-sm text-brown dark:text-dark-text/80">Set up access to the FormFlow dashboard.</p>
+        <p className="text-sm text-brown dark:text-dark-text/80">It's free, and you'll be building your first form in a minute.</p>
       </div>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <label className="block space-y-2">

@@ -11,7 +11,7 @@ function getErrorMessage(error) {
   if (Array.isArray(detail)) {
     return detail.map((item) => item.msg).join(', ')
   }
-  return detail || 'Unable to sign in. Check your details and try again.'
+  return detail || "That didn't work. Check your email and password and try again."
 }
 
 export default function LoginPage() {
@@ -59,7 +59,7 @@ export default function LoginPage() {
     <div className="mx-auto max-w-md rounded-3xl border border-white/80 bg-white/85 p-8 shadow-[0_30px_100px_rgba(15,23,42,0.08)] backdrop-blur">
       <div className="mb-6 space-y-2">
         <h1 className="font-display text-3xl font-bold tracking-tight">Welcome back</h1>
-        <p className="text-sm text-brown dark:text-dark-text/80">Sign in to continue to your dashboard.</p>
+        <p className="text-sm text-brown dark:text-dark-text/80">Sign in to get back to your forms.</p>
       </div>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <label className="block space-y-2">

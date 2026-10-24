@@ -119,7 +119,7 @@ export default function AnalyticsPage() {
         setAnalytics(data)
         setStatus('')
       })
-      .catch(() => setStatus('Analytics are not available for this form.'))
+      .catch(() => setStatus('There are no analytics for this form yet.'))
   }, [formId])
 
   const handleExport = async () => {
@@ -127,7 +127,7 @@ export default function AnalyticsPage() {
     try {
       await downloadExcel(formId)
     } catch {
-      setStatus('Failed to export responses.')
+      setStatus('The export didn\'t work. Try again in a moment.')
     } finally {
       setExporting(false)
     }
@@ -228,7 +228,7 @@ export default function AnalyticsPage() {
       </div>
 
       <div className="space-y-5">
-        <h2 className="text-xl font-semibold">Question-wise analytics</h2>
+        <h2 className="text-xl font-semibold">Answers by question</h2>
         {analytics.questions.map((question) => (
           <QuestionChart key={question.question_id} question={question} />
         ))}

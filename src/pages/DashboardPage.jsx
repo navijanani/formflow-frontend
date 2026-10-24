@@ -26,12 +26,12 @@ export default function DashboardPage() {
         setTotal(data.total)
         setStatus('')
       })
-      .catch(() => setStatus('Unable to load forms.'))
+      .catch(() => setStatus('We couldn\'t load your forms. Try refreshing the page.'))
       .finally(() => setLoading(false))
   }, [page])
 
   const handleDelete = async (formId, formTitle) => {
-    if (!window.confirm(`Are you sure you want to delete "${formTitle}"? This action cannot be undone.`)) {
+    if (!window.confirm(`Delete "${formTitle}"? You won't be able to get it back.`)) {
       return
     }
 
@@ -39,7 +39,7 @@ export default function DashboardPage() {
     try {
       await deleteForm(formId)
       setForms((current) => current.filter((f) => f.id !== formId))
-      setStatus('Form deleted successfully')
+      setStatus('Form deleted.')
       setTimeout(() => setStatus(''), 3000)
     } catch (error) {
       setStatus(error?.response?.data?.detail || 'Unable to delete form')
@@ -53,7 +53,7 @@ export default function DashboardPage() {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <p className="text-sm font-medium text-primary">{user?.full_name || user?.email || 'Workspace'}</p>
-          <h1 className="font-display text-3xl font-bold tracking-tight">Recent forms</h1>
+          <h1 className="font-display text-3xl font-bold tracking-tight">Your forms</h1>
         </div>
         <Link to="/forms/new" className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark">
           Blank form

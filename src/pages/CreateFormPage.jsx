@@ -469,7 +469,7 @@ export default function CreateFormPage() {
                 onChange={(event) => setForm((current) => ({ ...current, allow_response_edit: event.target.checked }))}
                 className="h-4 w-4 rounded border-warm-gray text-primary"
               />
-              Allow users to edit their responses
+              Let people edit their answers after submitting
             </label>
           </div>
         </div>
