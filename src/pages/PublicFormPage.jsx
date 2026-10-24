@@ -148,7 +148,7 @@ export default function PublicFormPage() {
         setForm(data)
         setStatus('')
       })
-      .catch(() => setStatus('This form is not available.'))
+      .catch(() => setStatus('This form isn\'t available. It may be private or deleted.'))
   }, [publicId])
 
   const sortedQuestions = useMemo(
@@ -346,11 +346,11 @@ export default function PublicFormPage() {
       let result
       if (isEditing && responseId) {
         result = await updatePublicResponse(publicId, responseId, payload)
-        setStatus('Your response has been updated.')
+        setStatus('Your changes are saved.')
       } else {
         result = await submitPublicForm(publicId, payload)
         setResponseId(result.response_id)
-        setStatus('Your response has been recorded.')
+        setStatus('Thanks, we got your answers.')
       }
       
       setSubmitted(true)
@@ -376,14 +376,14 @@ export default function PublicFormPage() {
               className="inline-flex items-center gap-2 rounded-md border border-warm-gray bg-cream px-4 py-2 text-sm font-semibold text-brown-dark transition hover:bg-beige dark:border-dark-border-alt dark:bg-dark-elevated dark:text-dark-text dark:hover:bg-dark-surface"
             >
               <ArrowLeft size={16} weight="bold" />
-              Back to Edit
+              Back to editing
             </Link>
           </div>
         ) : null}
         <div className="overflow-hidden rounded-lg border border-warm-gray bg-beige shadow-sm dark:border-dark-border dark:bg-dark-surface">
           <div className="h-2 bg-primary" />
           <div className="p-6">
-            <h1 className="font-display text-2xl font-bold dark:text-dark-text">Response submitted</h1>
+            <h1 className="font-display text-2xl font-bold dark:text-dark-text">All done</h1>
             <p className="mt-3 text-brown dark:text-dark-text">{status}</p>
             <div className="mt-5 flex flex-wrap gap-3">
               {form.allow_response_edit ? (
@@ -426,7 +426,7 @@ export default function PublicFormPage() {
             className="inline-flex items-center gap-2 rounded-md border border-warm-gray bg-cream px-4 py-2 text-sm font-semibold text-brown-dark transition hover:bg-beige dark:border-dark-border-alt dark:bg-dark-elevated dark:text-dark-text dark:hover:bg-dark-surface"
           >
             <ArrowLeft size={16} weight="bold" />
-            Back to Edit
+            Back to editing
           </Link>
         </div>
       ) : null}
@@ -435,12 +435,12 @@ export default function PublicFormPage() {
           <div className="rounded-md border border-primary/20 bg-primary/10 px-4 py-3 text-sm font-medium text-primary dark:border-primary/30 dark:bg-primary/20">
             <div className="flex items-center gap-2">
               <Eye size={20} weight="duotone" />
-              <span>Preview Mode - This form cannot be submitted in preview mode</span>
+              <span>This is a preview. You can look around, but you can't submit it.</span>
             </div>
           </div>
         ) : isEditing ? (
           <div className="rounded-md border border-primary/20 bg-primary/10 px-4 py-3 text-sm font-medium text-primary dark:border-primary/30 dark:bg-primary/20">
-            You are editing your previous response
+            You're editing the answers you sent earlier.
           </div>
         ) : null}
 

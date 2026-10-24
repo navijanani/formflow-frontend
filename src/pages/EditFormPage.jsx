@@ -67,7 +67,7 @@ export default function EditFormPage() {
         })
         setStatus('Saved')
       } catch (error) {
-        setStatus(error?.response?.data?.detail || 'Unable to auto-save form')
+        setStatus(error?.response?.data?.detail || 'Couldn\'t save your latest changes')
       } finally {
         setSaving(false)
       }
@@ -224,7 +224,7 @@ export default function EditFormPage() {
               onChange={(event) => setForm((current) => ({ ...current, allow_response_edit: event.target.checked }))}
               className="h-4 w-4 rounded border-warm-gray text-primary"
             />
-            Allow users to edit their responses
+            Let people edit their answers after submitting
           </label>
           {status ? <p className="text-sm text-brown dark:text-dark-text">{status}</p> : null}
           <button disabled={saving} className="rounded-md bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary-dark disabled:opacity-70">

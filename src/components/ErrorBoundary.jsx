@@ -26,7 +26,7 @@ export default class ErrorBoundary extends Component {
             </div>
             <h1 className="mb-2 text-xl font-semibold text-slate-900">Something went wrong</h1>
             <p className="mb-6 text-sm text-slate-600">
-              The application encountered an unexpected error. Please refresh the page to try again.
+              Something broke on our end. Refreshing the page usually fixes it.
             </p>
             <button
               onClick={() => window.location.reload()}
